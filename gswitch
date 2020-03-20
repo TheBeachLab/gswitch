@@ -6,7 +6,7 @@ if [ "$(whoami)" != "root" ]; then
 fi
 
 EGPU_TEMPLATE="/etc/X11/xorg.conf.egpu"
-EGPU_BUS_ID=$(awk '/BusID/{gsub(/(PCI:|\")/," ");print$2}' < ${EGPU_TEMPLATE})
+EGPU_BUS_ID=$(awk '/BusID/{gsub(/(PCI:|")/," ");print$2}' < ${EGPU_TEMPLATE})
 XORG_DRIVER=$(awk '/Driver/{gsub("\"","");print$2}' < ${EGPU_TEMPLATE})
 
 if [ -h /etc/X11/xorg.conf ] && \
